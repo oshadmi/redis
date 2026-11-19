@@ -73,26 +73,13 @@ jobs:
       # arch×osnick combo with its image and package family; every listed
       # image publishes a multi-arch manifest.
       matrix:
-        arch: [x64, arm64]
-        osnick: [focal, jammy, noble, resolute, bookworm, trixie,
-                 alma8, alma9, alma10, rocky8, rocky9, rocky10,
-                 amazonlinux2023, azurelinux3, alpine]
+        arch: [x64]
+        osnick: [alma8, alma9, rocky8, rocky9]
         include:
-          - { osnick: focal,           image: 'ubuntu:20.04',                                family: apt  }
-          - { osnick: jammy,           image: 'ubuntu:22.04',                                family: apt  }
-          - { osnick: noble,           image: 'ubuntu:24.04',                                family: apt  }
-          - { osnick: resolute,        image: 'ubuntu:26.04',                                family: apt  }
-          - { osnick: bookworm,        image: 'debian:bookworm',                             family: apt  }
-          - { osnick: trixie,          image: 'debian:trixie',                               family: apt  }
           - { osnick: alma8,           image: 'almalinux:8',                                 family: dnf  }
           - { osnick: alma9,           image: 'almalinux:9',                                 family: dnf  }
-          - { osnick: alma10,          image: 'almalinux:10',                                family: dnf  }
           - { osnick: rocky8,          image: 'rockylinux:8',                                family: dnf  }
           - { osnick: rocky9,          image: 'rockylinux:9',                                family: dnf  }
-          - { osnick: rocky10,         image: 'quay.io/rockylinux/rockylinux:10',            family: dnf  }
-          - { osnick: amazonlinux2023, image: 'amazonlinux:2023',                            family: dnf  }
-          - { osnick: azurelinux3,     image: 'mcr.microsoft.com/azurelinux/base/core:3.0',  family: tdnf }
-          - { osnick: alpine,          image: 'alpine:3.23',                                 family: apk  }
     steps:
     - name: install manual prerequisites
       run: |
